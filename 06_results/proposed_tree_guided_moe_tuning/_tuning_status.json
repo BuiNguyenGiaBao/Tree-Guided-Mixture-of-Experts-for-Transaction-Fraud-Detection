@@ -1,0 +1,114 @@
+[
+  {
+    "config": {
+      "name": "A_current_pr_auc_seed42",
+      "seed": 42,
+      "lr": 0.0003,
+      "dropout": 0.3,
+      "kd_weight": 0.3,
+      "lambda_supcon": 0.01,
+      "selection_objective": "PR_AUC"
+    },
+    "script": "D:\\project\\model chinh\\generated_tuning_runs\\A_current_pr_auc_seed42.py",
+    "return_code": 0,
+    "time": "2026-06-24 16:53:40"
+  },
+  {
+    "config": {
+      "name": "B_kd030_sup010_mcc_seed42",
+      "seed": 42,
+      "lr": 0.0003,
+      "dropout": 0.3,
+      "kd_weight": 0.3,
+      "lambda_supcon": 0.01,
+      "selection_objective": "MCC"
+    },
+    "script": "D:\\project\\model chinh\\generated_tuning_runs\\B_kd030_sup010_mcc_seed42.py",
+    "return_code": 0,
+    "time": "2026-06-24 17:00:33"
+  },
+  {
+    "config": {
+      "name": "C_kd030_sup010_f1_seed42",
+      "seed": 42,
+      "lr": 0.0003,
+      "dropout": 0.3,
+      "kd_weight": 0.3,
+      "lambda_supcon": 0.01,
+      "selection_objective": "Fraud_F1"
+    },
+    "script": "D:\\project\\model chinh\\generated_tuning_runs\\C_kd030_sup010_f1_seed42.py",
+    "return_code": 0,
+    "time": "2026-06-24 17:07:32"
+  },
+  {
+    "config": {
+      "name": "D_kd030_sup010_recallP80_seed42",
+      "seed": 42,
+      "lr": 0.0003,
+      "dropout": 0.3,
+      "kd_weight": 0.3,
+      "lambda_supcon": 0.01,
+      "selection_objective": "Recall@Precision>=0.80"
+    },
+    "script": "D:\\project\\model chinh\\generated_tuning_runs\\D_kd030_sup010_recallP80_seed42.py",
+    "return_code": 0,
+    "time": "2026-06-24 17:11:52"
+  },
+  {
+    "config": {
+      "name": "E_kd020_sup005_pr_auc_seed42",
+      "seed": 42,
+      "lr": 0.0003,
+      "dropout": 0.3,
+      "kd_weight": 0.2,
+      "lambda_supcon": 0.005,
+      "selection_objective": "PR_AUC"
+    },
+    "script": "D:\\project\\model chinh\\generated_tuning_runs\\E_kd020_sup005_pr_auc_seed42.py",
+    "return_code": 0,
+    "time": "2026-06-24 17:14:47"
+  },
+  {
+    "config": {
+      "name": "F_kd040_sup010_pr_auc_seed42",
+      "seed": 42,
+      "lr": 0.0003,
+      "dropout": 0.3,
+      "kd_weight": 0.4,
+      "lambda_supcon": 0.01,
+      "selection_objective": "PR_AUC"
+    },
+    "script": "D:\\project\\model chinh\\generated_tuning_runs\\F_kd040_sup010_pr_auc_seed42.py",
+    "return_code": 0,
+    "time": "2026-06-24 17:21:28"
+  },
+  {
+    "config": {
+      "name": "G_kd050_sup010_pr_auc_seed42",
+      "seed": 42,
+      "lr": 0.0003,
+      "dropout": 0.3,
+      "kd_weight": 0.5,
+      "lambda_supcon": 0.01,
+      "selection_objective": "PR_AUC"
+    },
+    "script": "D:\\project\\model chinh\\generated_tuning_runs\\G_kd050_sup010_pr_auc_seed42.py",
+    "return_code": 0,
+    "time": "2026-06-24 17:29:08"
+  },
+  {
+    "config": {
+      "name": "H_kd030_sup020_pr_auc_seed42",
+      "seed": 42,
+      "lr": 0.0003,
+      "dropout": 0.3,
+      "kd_weight": 0.3,
+      "lambda_supcon": 0.02,
+      "selection_objective": "PR_AUC"
+    },
+    "script": "D:\\project\\model chinh\\generated_tuning_runs\\H_kd030_sup020_pr_auc_seed42.py",
+    "return_code": 0,
+    "time": "2026-06-24 17:39:14"
+  }
+]

@@ -1,0 +1,22 @@
+[
+  {
+    "config": {
+      "name": "E_kd020_sup005_pr_auc_seed2024",
+      "seed": 2024,
+      "kd_weight": 0.2,
+      "lambda_supcon": 0.005
+    },
+    "return_code": 0,
+    "time": "2026-06-25 00:40:30"
+  },
+  {
+    "config": {
+      "name": "E_kd020_sup005_pr_auc_seed3407",
+      "seed": 3407,
+      "kd_weight": 0.2,
+      "lambda_supcon": 0.005
+    },
+    "return_code": 0,
+    "time": "2026-06-25 00:46:54"
+  }
+]

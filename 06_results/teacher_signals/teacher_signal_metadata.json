@@ -1,0 +1,13 @@
+{
+  "teacher_model": "LightGBM scale_pos_weight",
+  "teacher_selection_rule": "Prefer LightGBM, then CatBoost, then XGBoost, then HistGradientBoosting; otherwise best PR-AUC.",
+  "teacher_signal_files": {
+    "train": "D:\\project\\data\\merge_paper_ready_tree_cost\\teacher_signals\\teacher_signal_train.csv",
+    "val": "D:\\project\\data\\merge_paper_ready_tree_cost\\teacher_signals\\teacher_signal_val.csv",
+    "internal_test": "D:\\project\\data\\merge_paper_ready_tree_cost\\teacher_signals\\teacher_signal_internal_test.csv"
+  },
+  "distillation_columns": {
+    "probability": "teacher_prob",
+    "logit": "teacher_logit"
+  }
+}
