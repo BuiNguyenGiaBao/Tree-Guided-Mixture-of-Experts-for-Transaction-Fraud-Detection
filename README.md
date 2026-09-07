@@ -60,9 +60,9 @@ Main components include:
 
 The CNN representation is denoted as:
 
-\[
+$$
 z_{\mathrm{CNN}}
-\]
+$$
 
 ---
 
@@ -78,9 +78,9 @@ The DeepFM branch captures different levels of feature interaction through:
 
 The DeepFM representation is denoted as:
 
-\[
+$$
 z_{\mathrm{DeepFM}}
-\]
+$$
 
 ---
 
@@ -88,32 +88,32 @@ z_{\mathrm{DeepFM}}
 
 LightGBM is used as the tree-based teacher model.
 
-For a transaction \(x\), the teacher produces a fraud probability:
+For a transaction $x$, the teacher produces a fraud probability:
 
-\[
-p_T=P(y=1|x)
-\]
+$$
+p_T = P(y=1 \mid x)
+$$
 
-which can be represented as a teacher logit:
+which is represented as a teacher logit:
 
-\[
-l_T=\log\frac{p_T}{1-p_T}
-\]
+$$
+l_T = \log \frac{p_T}{1-p_T}
+$$
 
-The gating network receives the two neural representations together with the tree-based signal:
+The gating network receives:
 
-\[
+$$
 z_{\mathrm{CNN}},
 \quad
 z_{\mathrm{DeepFM}},
 \quad
 l_T
-\]
+$$
 
 and estimates adaptive expert weights:
 
-\[
-g=
+$$
+g =
 \operatorname{Softmax}
 \left(
 \operatorname{MLP}
@@ -125,30 +125,30 @@ z_{\mathrm{DeepFM}}
 l_T
 \right]
 \right)
-\]
+$$
 
-where:
+The expert weights are:
 
-\[
-g=
-[g_{\mathrm{CNN}},g_{\mathrm{DeepFM}}]
-\]
+$$
+g =
+[g_{\mathrm{CNN}}, g_{\mathrm{DeepFM}}]
+$$
 
-and:
+with:
 
-\[
-g_{\mathrm{CNN}}+g_{\mathrm{DeepFM}}=1
-\]
+$$
+g_{\mathrm{CNN}} + g_{\mathrm{DeepFM}} = 1
+$$
 
 The fused representation is:
 
-\[
+$$
 z_{\mathrm{fused}}
 =
-g_{\mathrm{CNN}}z_{\mathrm{CNN}}
+g_{\mathrm{CNN}} z_{\mathrm{CNN}}
 +
-g_{\mathrm{DeepFM}}z_{\mathrm{DeepFM}}
-\]
+g_{\mathrm{DeepFM}} z_{\mathrm{DeepFM}}
+$$
 
 The final classifier predicts the fraud probability from the fused representation.
 
@@ -162,14 +162,14 @@ The final classifier predicts the fraud probability from the fused representatio
 
 The objective function is:
 
-\[
+$$
 \mathcal{L}_{M1}
 =
 \mathcal{L}_{\mathrm{Focal}}
 +
 \lambda_{\mathrm{KD}}
 \mathcal{L}_{\mathrm{KD}}
-\]
+$$
 
 Model 1 is used as an intermediate architecture in the ablation analysis.
 
@@ -181,7 +181,7 @@ Model 1 is used as an intermediate architecture in the ablation analysis.
 
 The final objective function is:
 
-\[
+$$
 \mathcal{L}_{M2}
 =
 \mathcal{L}_{\mathrm{Focal}}
@@ -191,7 +191,7 @@ The final objective function is:
 +
 \lambda_{\mathrm{SC}}
 \mathcal{L}_{\mathrm{SupCon}}
-\]
+$$
 
 Model 2 is the final proposed model.
 
@@ -203,11 +203,11 @@ Model 2 is the final proposed model.
 
 Focal Loss is used to reduce the influence of easy majority-class samples and place greater emphasis on difficult fraud examples.
 
-\[
+$$
 \mathcal{L}_{\mathrm{Focal}}
 =
--\alpha_t(1-p_t)^\gamma\log(p_t)
-\]
+-\alpha_t (1-p_t)^\gamma \log(p_t)
+$$
 
 ---
 
@@ -216,6 +216,26 @@ Focal Loss is used to reduce the influence of easy majority-class samples and pl
 Knowledge Distillation transfers information from the LightGBM teacher to the neural student.
 
 The student is encouraged to produce predictions consistent with the teacher probability distribution while still optimizing the fraud classification objective.
+
+A general form of the distillation loss is:
+
+$$
+\mathcal{L}_{\mathrm{KD}}
+=
+T^2
+\cdot
+\mathrm{BCE}
+\left(
+\frac{z_S}{T},
+\sigma\left(\frac{z_T}{T}\right)
+\right)
+$$
+
+where:
+
+- $z_S$ is the student logit
+- $z_T$ is the teacher logit
+- $T$ is the distillation temperature
 
 ---
 
@@ -228,6 +248,12 @@ Its objective is to:
 - Pull samples from the same class closer together
 - Push samples from different classes farther apart
 - Improve fraud and non-fraud representation separation
+
+The contrastive objective operates on the fused representation:
+
+$$
+z_{\mathrm{fused}}
+$$
 
 ---
 
@@ -324,7 +350,7 @@ The final model also achieves higher observed F1, MCC, and high-precision recall
 
 The model development is evaluated progressively through the following sequence:
 
-\[
+$$
 \mathrm{CNN}
 \rightarrow
 \mathrm{DeepFM}
@@ -332,19 +358,16 @@ The model development is evaluated progressively through the following sequence:
 \mathrm{CNN+DeepFM}
 \rightarrow
 \mathrm{MoE}
-\]
-
-\[
 \rightarrow
 \mathrm{MoE+Focal}
+$$
+
+$$
 \rightarrow
 \mathrm{Tree\text{-}Guided\ MoE+KD+Focal}
-\]
-
-\[
 \rightarrow
 \mathrm{Tree\text{-}Guided\ MoE+KD+Focal+SupCon}
-\]
+$$
 
 This ablation design is used to analyze the contribution of each major architectural and optimization component.
 
@@ -400,22 +423,22 @@ The final architecture is:
 
 The framework integrates:
 
-\[
+$$
 \text{Tree Knowledge}
 +
 \text{CNN Representation Learning}
 +
 \text{DeepFM Feature Interaction}
-\]
+$$
 
-\[
+$$
 +
 \text{Adaptive Expert Routing}
 +
 \text{Class-Imbalance Learning}
 +
 \text{Contrastive Representation Learning}
-\]
+$$
 
 ---
 
@@ -435,13 +458,13 @@ The project focuses on:
 
 The main empirical finding can be summarized as:
 
-\[
+$$
 \text{Pure Deep Learning}
 <
 \text{Tree-Guided Deep Learning}
 \approx
 \text{Strong Tree-Based Machine Learning}
-\]
+$$
 
 ---
 
