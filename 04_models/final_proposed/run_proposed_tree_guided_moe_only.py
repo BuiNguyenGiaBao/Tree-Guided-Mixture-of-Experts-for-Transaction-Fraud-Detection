@@ -49,7 +49,6 @@ TARGET_COL = "isFraud"
 RANDOM_STATE = 42
 
 # DL experiments.
-# Có thể chạy ít trước bằng cách comment bớt.
 RUN_EXPERIMENTS = [
     "tree_guided_moe_kd_focal_supcon",
 ]
@@ -62,17 +61,13 @@ LEARNING_RATE = 3e-4
 WEIGHT_DECAY = 1e-4
 GRAD_CLIP_NORM = 5.0
 
-# Nếu máy yếu hoặc hay NaN, giữ USE_AMP=False.
 USE_AMP = False
 USE_WEIGHTED_SAMPLER = True
 NUM_WORKERS = 0
 
-# Nếu muốn chạy thử nhanh:
 SUBSET_TRAIN_N = None
 SUBSET_VAL_N = None
 SUBSET_TEST_N = None
-
-# Threshold and metrics
 THRESHOLD_OBJECTIVE = "f1"
 MIN_PRECISION_TARGET = 0.80
 THRESHOLD_MIN_PRECISION = None
